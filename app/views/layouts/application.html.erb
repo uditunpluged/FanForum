@@ -6,12 +6,124 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: "alert alert-info" %>
-<% end %>
-<%= yield %>
+<body class="nifty-ready pace-done">
+<div id="container" class="effect navbar-fixed">
+
+  <!--NAVBAR-->
+  <!--===================================================-->
+  <header id="navbar">
+    <div id="navbar-container" class="boxed">
+
+      <!--Brand logo & name-->
+      <!--================================-->
+      <div class="navbar-header">
+        <div class="navbar-brand">
+          <%= link_to root_path do %>
+              <span class="brand-text brand-title" style="color:#ffffff;">Fan Forums</span>
+          <% end %>
+
+        </div>
+      </div>
+
+
+      <!--================================-->
+      <!--End brand logo & name-->
+
+
+      <!--Navbar Dropdown-->
+      <!--================================-->
+      <div class="navbar-content clearfix">
+        <ul class="nav navbar-top-links pull-left">
+
+          <li>
+            <% if user_signed_in? %>
+                <%= link_to new_message_path do %>
+                    <button class="btn btn-default">Add New Message</button>
+                <% end %>
+            <% end %>
+          </li>
+
+        </ul>
+        <ul class="nav navbar-top-links pull-right">
+
+
+          <% if user_signed_in? %>
+              <li>
+                <%= link_to destroy_user_session_path,method: :delete do %>
+                    <button class="btn btn-mint">Sign out</button>
+                <% end %>
+              </li>
+          <% else %>
+              <li>
+                <%= link_to new_user_session_path do %>
+                    <button class="btn btn-mint">Sign in</button>
+                <% end %>
+                <li>
+                <li>
+                  <%= link_to new_user_registration_path do %>
+                      <button class="btn btn-success">Register</button>
+                  <% end %>
+                </li>
+          <% end %>
+
+        </ul>
+      </div>
+      <!--================================-->
+      <!--End Navbar Dropdown-->
+
+    </div>
+  </header>
+  <!--===================================================-->
+  <!--END NAVBAR-->
+
+
+  <div class="boxed">
+    <div id="content-container">
+
+
+      <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, class: "alert alert-info" %>
+      <% end %>
+      <%= yield %>
+
+
+    </div>
+  </div>
+
+  <!--===================================================-->
+  <!--END CONTENT CONTAINER-->
+
+  <!-- FOOTER -->
+  <!--===================================================-->
+  <footer id="footer">
+
+
+    <!-- Visible when footer positions are static -->
+    <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+    <div class="hide-fixed pull-right pad-rgt">Currently v2.2</div>
+
+
+    <p class="pad-lft">&#0169; 2015 Phantasmis ©</p>
+
+
+  </footer>
+  <!--===================================================-->
+  <!-- END FOOTER -->
+
+
+  <!-- SCROLL TOP BUTTON -->
+  <!--===================================================-->
+  <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+  <!--===================================================-->
+
+
+</div>
+<!--===================================================-->
+<!-- END OF CONTAINER -->
+
 
 </body>
+
+
 </html>

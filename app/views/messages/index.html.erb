@@ -1,13 +1,27 @@
-<div class="col-md-8 col-md-offset-2">
-  <h1 class="new-msg-header">All Messages</h1>
+<div>
+  <div id="page-title ">
+    <div class="col-md-10 col-md-offset-1">
+    <h1 class="text-thin text-overflow">All Messages</h1>
+      </div>
+  </div>
 
   <% @messages.each do |message| %>
       <div class="col-md-10 col-md-offset-1">
-        <div class="message">
-          <h2 class="message-title">
-            <%= message.title %>
-          </h2>
-          <%= link_to 'Join Convo', message_path(message), class: "btn-custom" %>
+        <div class="panel panel-purple">
+          <div class="panel-heading">
+            <h2 class="panel-title">
+              <%= message.title %>
+              <div class="pull-right">
+                <%= link_to 'Join Convo', message_path(message), class: "btn btn-mint" %>
+              </div>
+            </h2>
+
+
+
+          </div>
+          <div class="panel-body">
+            <%= truncate message.description,length: 50 %>
+          </div>
         </div>
       </div>
 
