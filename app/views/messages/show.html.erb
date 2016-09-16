@@ -1,20 +1,37 @@
-<div>
-  <div class="message-show">
-    <div id="page-title">
-      <h1 class="page-header text-overflow"><%= @message.title %></h1>
-    </div>
-    <p class="message-posted-by">
-      <%= time_ago_in_words(@message.created_at) %> ago
-    </p>
+<div class="col-md-10 col-md-offset-1">
+  <div class="panel">
+    <div class="panel-heading ">
+      <h2 class="panel-title"><%= @message.title %></h2>
 
-    <p class="message-desc">
+    </div>
+
+    <div class="panel-body">
       <%= @message.description %>
-    </p>
-
-    <div class="btn-group links">
-      <%= link_to 'Back', root_path, class: 'btn btn-default' %>
-      <%= link_to 'Edit', edit_message_path(@message), class: 'btn btn-info' %>
-      <%= link_to 'Delete', message_path(@message), method: :delete, data: {confirm: 'Are you sure, you wanna delete this?'}, class: 'btn btn-danger' %>
     </div>
+    <div class="panel-footer">
+
+      <div class="row">
+        <div class="col-sm-10">
+          <div class="pull-left panel-title">
+
+            <%= time_ago_in_words(@message.created_at) %> ago
+
+          </div>
+          <div class="panel-title pull-right">
+            <%= link_to 'Back', root_path, class: 'btn btn-default' %>
+            <%= link_to 'Edit', edit_message_path(@message), class: 'btn btn-info' %>
+            <%= link_to 'Delete', message_path(@message), method: :delete, data: {confirm: 'Are you sure, you wanna delete this?'}, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="title"> Comments </h3>
+  <div class="comments">
+        <%= render @message.comments %>
+  </div>
+  <div class="reply">
+        <%= render 'comments/form' %>
   </div>
 </div>

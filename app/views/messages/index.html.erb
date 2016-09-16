@@ -1,8 +1,8 @@
 <div>
   <div id="page-title ">
     <div class="col-md-10 col-md-offset-1">
-    <h1 class="text-thin text-overflow">All Messages</h1>
-      </div>
+      <h1 class="text-thin text-overflow">All Messages</h1>
+    </div>
   </div>
 
   <% @messages.each do |message| %>
@@ -16,11 +16,15 @@
               </div>
             </h2>
 
-
-
           </div>
           <div class="panel-body">
-            <%= truncate message.description,length: 50 %>
+            <%= truncate message.description, length: 50 %>
+          </div>
+          <div class="panel-footer">
+            <%= time_ago_in_words(message.created_at) %> ago
+            <div class="pull-right">
+              created by : <%= message.user.email %>
+            </div>
           </div>
         </div>
       </div>
