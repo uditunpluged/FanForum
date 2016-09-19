@@ -1,4 +1,20 @@
-<%= simple_form_for [@message,@message.comments.build] do |f| %>
-    <%= f.input :content %>
-    <%= f.button :submit %>
-<% end  %>
+<div class="panel-heading">
+  <div class="panel-title">
+    Post A Comment
+  </div>
+
+</div>
+<div class="panel-body">
+
+  <%= simple_form_for [@message, @message.comments.build] do |f| %>
+      <form class="form-group form-horizontal">
+
+        <div class="row">
+          <%= f.text_area :content, class: 'col-md-6',style:'font-color:#000000;' %>
+          <%= f.button :submit , class:'btn'%>
+        </div>
+
+      </form>
+  <% end %>
+
+</div>

@@ -27,11 +27,16 @@
     </div>
   </div>
 
-  <h3 class="title"> Comments </h3>
-  <div class="comments">
-        <%= render @message.comments %>
+  <div class="panel">
+    <div class="panel-heading"><h3 class="panel-title">Comments</h3></div>
+
+
+    <div class="panel-body">
+      <%= render @message.comments %>
+    </div>
   </div>
-  <div class="reply">
-        <%= render 'comments/form' %>
+
+  <div class="panel  panel-purple">
+    <%= render 'comments/form' %>
   </div>
 </div>

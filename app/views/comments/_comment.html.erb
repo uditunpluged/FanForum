@@ -1,7 +1,24 @@
-<div class="contetnt">
-  <%= comment.content %>
+<div class="panel panel-bordered-purple">
+  <div class="panel-title">
+    <%= comment.content %>
+  </div>
+
+  <div class="panel-footer">
+    <div class="row">
+      Commented by : <%= comment.user.email %>
+      <div class="pull-right">
+        <% if user_signed_in? %>
+            <% if comment.user_id == current_user.id %>
+                <%= link_to 'edit', edit_message_comment_path(comment.message, comment), class: 'btn btn-info' %>
+                <%= link_to 'delete', message_comment_path(comment.message, comment), method: :delete, data: {confirm: 'Are you sure?"'}, class: 'btn- btn-danger' %>
+            <% end %>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 
-<div>
-  Created By :<%= comment.user.email %>
-</div>
+
+
